@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geriglo — Creative Marketing Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F3EE;
+    --surface: #FFFFFF;
+    --text: #0E0E0D;
+    --muted: #7A7870;
+    --accent: #F5A623;
+    --accent-dark: #D4881A;
+    --border: rgba(14,14,13,0.1);
+    --radius: 16px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, h5 { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(245,243,238,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .nav-logo {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-decoration: none;
+    color: var(--text);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .logo-dot {
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted);
+    font-size: 0.875rem; font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: var(--text) !important;
+    color: var(--bg) !important;
+    padding: 0.55rem 1.25rem !important;
+    border-radius: 100px !important;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: #333 !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 8rem 4rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem; color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    width: fit-content;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-badge span {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .hero h1 {
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--muted);
+  }
+  .hero-bottom {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 2rem;
+    animation: fadeUp 0.6s ease 0.2s both;
+  }
+  .hero-desc { max-width: 420px; color: var(--muted); font-size: 1.05rem; }
+  .hero-actions { display: flex; gap: 1rem; flex-shrink: 0; }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--text);
+    border: none; border-radius: 100px;
+    padding: 0.9rem 2rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.95rem; font-weight: 700;
+    cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all 0.2s;
+    letter-spacing: -0.01em;
+  }
+  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1.5px solid var(--border);
+    border-radius: 100px;
+    padding: 0.9rem 2rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.95rem; font-weight: 600;
+    cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--text); transform: translateY(-2px); }
+
+  .hero-deco {
+    position: absolute; right: 4rem; top: 50%;
+    transform: translateY(-50%);
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.12;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+  .hero-grid-deco {
+    position: absolute; right: 4rem; top: 50%;
+    transform: translateY(-50%);
+    width: 380px; height: 380px;
+    border: 1.5px dashed rgba(14,14,13,0.12);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: spin 30s linear infinite;
+  }
+  @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+  @keyframes fadeUp { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform: translateY(0); } }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--text);
+    color: var(--bg);
+    display: flex; justify-content: center;
+    padding: 2rem 4rem;
+    gap: 4rem;
+    overflow: hidden;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 2rem; font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--accent);
+  }
+  .stat-label { font-size: 0.8rem; color: rgba(245,243,238,0.5); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* SECTION HELPERS */
+  section { padding: 7rem 4rem; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 1.25rem;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block; width: 28px; height: 1.5px;
+    background: var(--accent);
+  }
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800; letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+
+  /* SERVICES */
+  .services-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .service-card {
+    background: var(--surface);
+    padding: 2.5rem;
+    transition: background 0.3s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card:hover { background: var(--text); color: var(--bg); }
+  .service-card:hover .service-icon { color: var(--accent); }
+  .service-card:hover p { color: rgba(245,243,238,0.6); }
+  .service-card:hover .service-num { color: var(--accent); opacity: 0.4; }
+  .service-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 4rem; font-weight: 800;
+    color: var(--border); opacity: 1;
+    line-height: 1; margin-bottom: 1.5rem;
+    transition: all 0.3s;
+  }
+  .service-icon { font-size: 1.75rem; margin-bottom: 1rem; transition: color 0.3s; }
+  .service-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .service-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; transition: color 0.3s; }
+
+  /* WHY US */
+  .why-us { background: var(--text); color: var(--bg); }
+  .why-us .section-label { color: rgba(245,243,238,0.5); }
+  .why-us .section-label::before { background: var(--accent); }
+  .why-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    margin-top: 4rem;
+  }
+  .why-item { border-top: 1.5px solid rgba(245,243,238,0.1); padding-top: 2rem; }
+  .why-item h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .why-item p { color: rgba(245,243,238,0.55); font-size: 0.9rem; }
+  .why-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.8rem; font-weight: 700;
+    color: var(--accent); letter-spacing: 0.08em;
+    margin-bottom: 1rem; display: block;
+  }
+
+  /* PROCESS */
+  .process-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2rem; margin-top: 4rem;
+  }
+  .step { position: relative; }
+  .step-connector {
+    position: absolute; top: 1.25rem; left: 50%; width: 100%;
+    height: 1px; background: var(--border);
+  }
+  .step:last-child .step-connector { display: none; }
+  .step-num {
+    width: 2.5rem; height: 2.5rem;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.85rem; font-weight: 800;
+    margin-bottom: 1.5rem; position: relative; z-index: 1;
+  }
+  .step h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .step p { font-size: 0.85rem; color: var(--muted); }
+
+  /* TESTIMONIALS */
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; margin-top: 4rem;
+  }
+  .testimonial-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+  }
+  .testimonial-card .quote { font-size: 2rem; color: var(--accent); line-height: 1; margin-bottom: 1rem; }
+  .testimonial-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .author-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--text); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; font-weight: 800;
+    flex-shrink: 0;
+  }
+  .author-name { font-weight: 600; font-size: 0.9rem; }
+  .author-title { font-size: 0.8rem; color: var(--muted); }
+
+  /* CONTACT SECTION */
+  #contact { background: var(--bg); }
+  .contact-wrapper {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    align-items: start; margin-top: 4rem;
+  }
+  .contact-info h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+  .contact-info p { color: var(--muted); margin-bottom: 2rem; }
+  .contact-detail { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; color: var(--muted); font-size: 0.9rem; }
+  .contact-detail-icon { width: 36px; height: 36px; background: var(--text); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1rem; flex-shrink: 0; }
+
+  /* FORM */
+  .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-group label { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.02em; color: var(--text); }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--accent); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-success {
+    display: none;
+    background: #eefbe3;
+    border: 1.5px solid var(--accent-dark);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    color: #3a6e0a;
+    font-size: 0.9rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--text);
+    color: var(--bg);
+    padding: 4rem;
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+  }
+  .footer-brand-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.5rem; font-weight: 800;
+    letter-spacing: -0.03em;
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 1rem;
+  }
+  footer p { color: rgba(245,243,238,0.45); font-size: 0.85rem; }
+  .footer-col h5 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,243,238,0.4); margin-bottom: 1.25rem; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-col ul li a { color: rgba(245,243,238,0.65); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--accent); }
+  .footer-bottom {
+    background: var(--text);
+    padding: 1.5rem 4rem;
+    border-top: 1px solid rgba(245,243,238,0.08);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.8rem; color: rgba(245,243,238,0.3);
+  }
+  .footer-bottom a { color: var(--accent); text-decoration: none; }
+
+  /* MODAL OVERLAY */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(14,14,13,0.5);
+    backdrop-filter: blur(4px);
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 2.5rem;
+    width: 90%; max-width: 600px;
+    max-height: 90vh; overflow-y: auto;
+    position: relative;
+    animation: modalIn 0.3s ease;
+  }
+  @keyframes modalIn { from { opacity:0; transform: scale(0.96) translateY(16px); } }
+  .modal-close {
+    position: absolute; top: 1.25rem; right: 1.25rem;
+    background: var(--bg); border: none;
+    width: 36px; height: 36px; border-radius: 50%;
+    cursor: pointer; font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted);
+  }
+  .modal-close:hover { color: var(--text); }
+  .modal h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.4rem; }
+  .modal .modal-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+
+  /* ADMIN PAGE */
+  .admin-page {
+    display: none; position: fixed; inset: 0; z-index: 2000;
+    background: #0E0E0D;
+    overflow-y: auto;
+  }
+  .admin-page.active { display: block; }
+  .admin-nav {
+    background: #171715;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 1.25rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 10;
+  }
+  .admin-brand {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.1rem; font-weight: 800;
+    color: #fff; display: flex; align-items: center; gap: 8px;
+  }
+  .admin-brand span { color: var(--accent); }
+  .admin-tabs { display: flex; gap: 0.25rem; }
+  .admin-tab {
+    background: transparent; border: none; border-radius: 8px;
+    padding: 0.5rem 1rem; color: rgba(255,255,255,0.45);
+    font-family: 'Inter', sans-serif; font-size: 0.85rem;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .admin-tab.active, .admin-tab:hover { background: rgba(255,255,255,0.07); color: #fff; }
+  .admin-content { padding: 2.5rem 3rem; max-width: 1100px; }
+  .admin-section { display: none; }
+  .admin-section.active { display: block; }
+  .admin-header { margin-bottom: 2rem; }
+  .admin-header h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.5rem; font-weight: 800; color: #fff; }
+  .admin-header p { color: rgba(255,255,255,0.35); font-size: 0.875rem; margin-top: 0.25rem; }
+
+  /* CLIENTS TABLE */
+  .clients-table { width: 100%; border-collapse: collapse; }
+  .clients-table th {
+    text-align: left; font-size: 0.75rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+  }
+  .clients-table td {
+    padding: 1rem; font-size: 0.875rem; color: rgba(255,255,255,0.75);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .clients-table tr:hover td { background: rgba(255,255,255,0.03); }
+  .badge {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    border-radius: 100px;
+    font-size: 0.75rem; font-weight: 500;
+  }
+  .badge-new { background: rgba(200,240,74,0.12); color: var(--accent); }
+  .badge-review { background: rgba(250,199,117,0.12); color: #FAC775; }
+  .badge-active { background: rgba(93,202,165,0.12); color: #5DCAA5; }
+  .badge-done { background: rgba(135,135,128,0.12); color: #888780; }
+  .action-btn {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.65); border-radius: 6px;
+    padding: 0.3rem 0.7rem; font-size: 0.78rem; cursor: pointer;
+    transition: all 0.2s; font-family: 'Inter', sans-serif;
+  }
+  .action-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+  .action-btn.danger { color: #F09595; border-color: rgba(240,149,149,0.2); }
+  .action-btn.danger:hover { background: rgba(240,149,149,0.1); }
+
+  /* ADMIN SITE EDITOR */
+  .editor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .editor-card {
+    background: #171715;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px; padding: 1.5rem;
+  }
+  .editor-card h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem; font-weight: 700;
+    color: rgba(255,255,255,0.8); margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .editor-card h4 span { font-size: 1rem; }
+  .admin-input {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px; padding: 0.7rem 0.9rem;
+    font-family: 'Inter', sans-serif; font-size: 0.875rem;
+    color: rgba(255,255,255,0.8); width: 100%;
+    outline: none; margin-bottom: 0.75rem;
+    transition: border-color 0.2s;
+  }
+  .admin-input:focus { border-color: rgba(200,240,74,0.4); }
+  .admin-input-label { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-bottom: 0.35rem; display: block; letter-spacing: 0.04em; }
+  .admin-save-btn {
+    background: var(--accent); color: var(--text);
+    border: none; border-radius: 8px;
+    padding: 0.6rem 1.25rem;
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; font-weight: 700;
+    cursor: pointer; width: 100%; margin-top: 0.5rem;
+    transition: background 0.2s;
+  }
+  .admin-save-btn:hover { background: var(--accent-dark); }
+  .admin-logout {
+    background: rgba(240,149,149,0.08); border: 1px solid rgba(240,149,149,0.2);
+    color: #F09595; border-radius: 8px;
+    padding: 0.5rem 1rem; font-family: 'Inter', sans-serif;
+    font-size: 0.85rem; cursor: pointer; transition: all 0.2s;
+  }
+  .admin-logout:hover { background: rgba(240,149,149,0.15); }
+
+  /* ADMIN LOGIN */
+  .admin-login {
+    display: none; position: fixed; inset: 0; z-index: 3000;
+    background: #0E0E0D;
+    align-items: center; justify-content: center;
+  }
+  .admin-login.active { display: flex; }
+  .login-box {
+    background: #171715;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px; padding: 2.5rem;
+    width: 100%; max-width: 380px;
+  }
+  .login-box h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 0.35rem; }
+  .login-box p { color: rgba(255,255,255,0.35); font-size: 0.85rem; margin-bottom: 2rem; }
+  .login-error { background: rgba(240,149,149,0.1); border: 1px solid rgba(240,149,149,0.2); color: #F09595; border-radius: 8px; padding: 0.7rem 1rem; font-size: 0.85rem; margin-bottom: 1rem; display: none; }
+
+  /* STATS CARDS */
+  .admin-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
+  .admin-stat-card {
+    background: #171715; border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px; padding: 1.25rem;
+  }
+  .admin-stat-card .num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.75rem; font-weight: 800; color: #fff; }
+  .admin-stat-card .label { font-size: 0.78rem; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 0.25rem; }
+  .admin-stat-card .trend { font-size: 0.78rem; color: #5DCAA5; margin-top: 0.5rem; }
+
+  .empty-state {
+    text-align: center; padding: 3rem;
+    color: rgba(255,255,255,0.25); font-size: 0.9rem;
+  }
+  .select-status {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.75);
+    border-radius: 6px; padding: 0.25rem 0.5rem;
+    font-size: 0.78rem; cursor: pointer;
+    font-family: 'Inter', sans-serif;
+  }
+
+
+  /* PORTFOLIO */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .portfolio-item {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--border);
+    aspect-ratio: 4/3;
+    cursor: pointer;
+  }
+  .portfolio-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .portfolio-item:hover img { transform: scale(1.04); }
+  .portfolio-overlay {
+    position: absolute; inset: 0;
+    background: rgba(14,14,13,0);
+    transition: background 0.3s;
+    display: flex; align-items: flex-end;
+    padding: 1.5rem;
+  }
+  .portfolio-item:hover .portfolio-overlay { background: rgba(14,14,13,0.6); }
+  .portfolio-caption {
+    opacity: 0; transform: translateY(8px);
+    transition: all 0.3s;
+    color: #fff;
+  }
+  .portfolio-item:hover .portfolio-caption { opacity: 1; transform: translateY(0); }
+  .portfolio-caption h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+  .portfolio-caption span { font-size: 0.8rem; color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase; }
+  .portfolio-empty { text-align: center; padding: 4rem 2rem; color: var(--muted); font-size: 0.95rem; }
+  @media (max-width: 900px) { .portfolio-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .portfolio-grid { grid-template-columns: 1fr; } }
+
+  /* WORKS ADMIN TAB */
+  .works-upload-area {
+    border: 2px dashed rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 2.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    margin-bottom: 1.5rem;
+  }
+  .works-upload-area:hover { border-color: rgba(200,240,74,0.4); }
+  .works-upload-area p { color: rgba(255,255,255,0.4); font-size: 0.875rem; margin-top: 0.5rem; }
+  .works-upload-area .upload-icon { font-size: 2rem; margin-bottom: 0.5rem; opacity: 0.4; }
+  .works-grid-admin {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+  }
+  .work-thumb {
+    position: relative; border-radius: 10px; overflow: hidden;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .work-thumb img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+  .work-thumb-meta { padding: 0.75rem; }
+  .work-thumb-meta input {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px; padding: 0.4rem 0.6rem;
+    font-family: 'Inter', sans-serif; font-size: 0.78rem;
+    color: rgba(255,255,255,0.7); width: 100%; margin-bottom: 0.4rem;
+    outline: none;
+  }
+  .work-thumb-actions { display: flex; gap: 6px; }
+  .work-remove-btn {
+    background: rgba(240,149,149,0.08); border: 1px solid rgba(240,149,149,0.2);
+    color: #F09595; border-radius: 6px; padding: 0.3rem 0.6rem;
+    font-size: 0.75rem; cursor: pointer; width: 100%;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.2s;
+  }
+  .work-remove-btn:hover { background: rgba(240,149,149,0.16); }
+  .work-save-inline-btn {
+    background: rgba(200,240,74,0.08); border: 1px solid rgba(200,240,74,0.2);
+    color: #C8F04A; border-radius: 6px; padding: 0.3rem 0.6rem;
+    font-size: 0.75rem; cursor: pointer; width: 100%;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.2s;
+  }
+  .work-save-inline-btn:hover { background: rgba(200,240,74,0.16); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 2rem; }
+    .nav-links { gap: 1.5rem; }
+    section { padding: 5rem 2rem; }
+    .hero { padding: 7rem 2rem 4rem; }
+    .hero h1 { font-size: clamp(2.5rem, 10vw, 4rem); }
+    .hero-bottom { flex-direction: column; align-items: flex-start; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .contact-wrapper { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-grid-deco { display: none; }
+    .why-grid { grid-template-columns: 1fr; }
+    .stats-bar { gap: 2rem; padding: 2rem; flex-wrap: wrap; }
+    .admin-stats { grid-template-columns: 1fr 1fr; }
+    .editor-grid { grid-template-columns: 1fr; }
+    .admin-content { padding: 1.5rem; }
+    .admin-nav { padding: 1rem 1.5rem; flex-wrap: wrap; gap: 1rem; }
+    .services-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MAIN SITE -->
+<div id="main-site">
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="geriglo new logo.svg" width="200" height="75" style="object-fit:contain;" onerror="this.style.display='none'"><span id="nav-brand" style="display:none;"></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#works">Work</a></li>
+    <li><a href="#testimonials">Clients</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-deco"></div>
+  <div class="hero-grid-deco"></div>
+  <div class="hero-badge"><span style="background:#F5A623;"></span><span id="hero-badge-text">Creative Agency · Est. 2024</span></div>
+  <h1 id="hero-title">We Make<br>Brands <em>Glow.</em></h1>
+  <div class="hero-bottom">
+    <p class="hero-desc" id="hero-desc">Geriglo is a full-service creative marketing agency helping brands stand out through design, digital strategy, and storytelling.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary" onclick="openContactModal()">Start a Project →</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num" id="stat1">50+</div><div class="stat-label">Happy Clients</div></div>
+  <div class="stat"><div class="stat-num" id="stat2">200+</div><div class="stat-label">Projects Delivered</div></div>
+  <div class="stat"><div class="stat-num" id="stat3">5★</div><div class="stat-label">Average Rating</div></div>
+  <div class="stat"><div class="stat-num" id="stat4">3+</div><div class="stat-label">Years Experience</div></div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Services Built<br>for Impact</h2>
+    </div>
+    <a href="#contact" class="btn-outline" onclick="openContactModal(); return false;">Get a Custom Quote →</a>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon">—</div>
+      <h3>Graphic Designing</h3>
+      <p>From logos to brand identities, social media visuals to marketing collateral — we craft visuals that communicate and convert.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon">—</div>
+      <h3>Digital Marketing</h3>
+      <p>Data-driven campaigns across Google, Meta, and beyond. We grow your reach, drive qualified leads, and maximize ROI.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon">—</div>
+      <h3>Video Editing</h3>
+      <p>Vlogs, ads, reels, tutorials — we transform raw footage into polished, engaging stories that captivate your audience.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon">—</div>
+      <h3>Social Media Management</h3>
+      <p>Consistent content strategy, community engagement, and analytics across Instagram, LinkedIn, Facebook, and more.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us" id="about">
+  <div class="section-label">Why Geriglo</div>
+  <h2 class="section-title" style="color:#F5F3EE;">We Don't Just<br>Deliver — We Glow.</h2>
+  <div class="why-grid">
+    <div class="why-item">
+      <span class="why-num">01</span>
+      <h4>Strategy-First Approach</h4>
+      <p>Every creative decision is rooted in data and strategy. We don't make things pretty — we make things work.</p>
+    </div>
+    <div class="why-item">
+      <span class="why-num">02</span>
+      <h4>Fast Turnarounds</h4>
+      <p>We respect your time. With streamlined workflows, you get quality work delivered without endless back-and-forth.</p>
+    </div>
+    <div class="why-item">
+      <span class="why-num">03</span>
+      <h4>Dedicated Account Manager</h4>
+      <p>One point of contact who knows your brand inside-out and ensures every deliverable is on-brand, on-time.</p>
+    </div>
+    <div class="why-item">
+      <span class="why-num">04</span>
+      <h4>Transparent Pricing</h4>
+      <p>No hidden costs, no surprises. Clear scopes and honest conversations about what your budget can achieve.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-label">How We Work</div>
+  <h2 class="section-title">Our 4-Step Process</h2>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-connector"></div>
+      <div class="step-num">1</div>
+      <h4>Discovery Call</h4>
+      <p>We learn about your brand, goals, and audience to align on direction.</p>
+    </div>
+    <div class="step">
+      <div class="step-connector"></div>
+      <div class="step-num">2</div>
+      <h4>Strategy & Proposal</h4>
+      <p>We craft a custom plan with timelines, deliverables, and pricing.</p>
+    </div>
+    <div class="step">
+      <div class="step-connector"></div>
+      <div class="step-num">3</div>
+      <h4>Execution</h4>
+      <p>Our team gets to work with regular updates and open collaboration.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>Launch & Grow</h4>
+      <p>We publish, analyze, optimize — and scale what's working.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- PORTFOLIO / WORKS -->
+<section id="works" style="background: var(--bg);">
+  <div class="services-header">
+    <div>
+      <div class="section-label">Our Work</div>
+      <h2 class="section-title">Selected<br>Projects</h2>
+    </div>
+  </div>
+  <div class="portfolio-grid" id="portfolio-grid">
+    <!-- Works are loaded dynamically from localStorage -->
+  </div>
+  <div class="portfolio-empty" id="portfolio-empty" style="display:none;">
+    <p>Portfolio coming soon.</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background: var(--surface);">
+  <div class="section-label">Client Love</div>
+  <h2 class="section-title">What Our Clients Say</h2>
+  <div class="testimonials-grid" id="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="quote">"</div>
+      <p>Geriglo transformed our Instagram from a ghost town to our top lead source. Their strategy was sharp and the content was fire.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">AK</div>
+        <div><div class="author-name">Aanya Kapoor</div><div class="author-title">Founder, Bloom Studio</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="quote">"</div>
+      <p>The video edits they delivered were miles ahead of what we expected. Professional, fast, and genuinely creative team.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">RN</div>
+        <div><div class="author-name">Ravi Nair</div><div class="author-title">CEO, TechForward</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="quote">"</div>
+      <p>Switching to Geriglo for our digital ads was the best decision we made this year. Our ROAS jumped 3x in two months.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">PM</div>
+        <div><div class="author-name">Priya Mehta</div><div class="author-title">Marketing Head, Finverse</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get in Touch</div>
+  <h2 class="section-title">Let's Build<br>Something Great</h2>
+  <div class="contact-wrapper">
+    <div class="contact-info">
+      <h3>Ready to grow your brand?</h3>
+      <p>Fill out the form or reach us directly. We typically respond within 24 hours.</p>
+      <div class="contact-detail"><div class="contact-detail-icon">✉</div><span id="contact-email">hello@geriglo.com</span></div>
+      <div class="contact-detail"><div class="contact-detail-icon">📞</div><span id="contact-phone">+91 98765 43210</span></div>
+      <div class="contact-detail"><div class="contact-detail-icon">📍</div><span id="contact-location">Mumbai, India</span></div>
+      <div style="margin-top: 2rem;">
+        <a href="#" class="btn-primary" style="width: fit-content;" onclick="openContactModal(); return false;">Start a Project →</a>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form" id="inline-contact-form">
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="John" id="ic-fname"></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Doe" id="ic-lname"></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="john@company.com" id="ic-email"></div>
+        <div class="form-group"><label>Phone Number</label><input type="text" placeholder="+91 1234567890" id="ic-phone"></div>
+        <div class="form-group"><label>Service Interested In</label>
+          <select id="ic-service">
+            <option value="">Select a service</option>
+            <option>Graphic Designing</option>
+            <option>Digital Marketing</option>
+            <option>Video Editing</option>
+            <option>Social Media Management</option>
+            <option>Full Package</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Tell us about your project</label><textarea placeholder="Describe your goals, timeline, and budget..." id="ic-message"></textarea></div>
+        <div class="form-success" id="inline-success">✓ Message sent! We'll get back to you within 24 hours.</div>
+        <button class="btn-primary" onclick="submitInlineForm()" style="width: 100%; justify-content: center;">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand-name"><img src="geriglo new logo white.svg" width="100" height="50" style="object-fit:contain;" onerror="this.style.display='none'">
+    <p id="footer-tagline" style="margin-top: 0.5rem; font-size: 0.8rem; color: rgba(245,243,238,0.4);">Making brands glow through creative marketing, design, and storytelling.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.75rem; color: rgba(245,243,238,0.2);">© 2024 Geriglo. All rights reserved.</p>
+  </div>
+  <div class="footer-col">
+    <h5>Services</h5>
+    <ul>
+      <li><a href="#">Graphic Designing</a></li>
+      <li><a href="#">Digital Marketing</a></li>
+      <li><a href="#">Video Editing</a></li>
+      <li><a href="#">Social Media</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h5>Company</h5>
+    <ul>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" onclick="showAdminLogin(); return false;">Admin</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>Geriglo Creative Agency</span>
+  <a href="#" onclick="showAdminLogin(); return false;">Admin Portal</a>
+</div>
+
+</div><!-- /main-site -->
+
+<!-- CONTACT MODAL -->
+<div class="modal-overlay" id="contact-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeContactModal()">✕</button>
+    <h2>Start a Project</h2>
+    <p class="modal-sub">Fill in the form below and we'll get back to you within 24 hours.</p>
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group"><label>First Name *</label><input type="text" id="m-fname" placeholder="John"></div>
+        <div class="form-group"><label>Last Name *</label><input type="text" id="m-lname" placeholder="Doe"></div>
+      </div>
+      <div class="form-group"><label>Email Address *</label><input type="email" id="m-email" placeholder="john@company.com"></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" id="m-phone" placeholder="+1 234 567 8900"></div>
+      <div class="form-group"><label>Company / Brand Name</label><input type="text" id="m-company" placeholder="Your Company"></div>
+      <div class="form-group"><label>Service Required *</label>
+        <select id="m-service">
+          <option value="">Select a service</option>
+          <option>Graphic Designing</option>
+          <option>Digital Marketing</option>
+          <option>Video Editing</option>
+          <option>Social Media Management</option>
+          <option>Full Package</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Budget Range</label>
+        <select id="m-budget">
+          <option value="">Select budget range</option>
+          <option>Under ₹10,000/mo</option>
+          <option>₹10,000 – ₹30,000/mo</option>
+          <option>₹30,000 – ₹75,000/mo</option>
+          <option>₹75,000+/mo</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Project Details *</label><textarea id="m-message" placeholder="Tell us about your goals, timeline, and what you're looking to achieve..."></textarea></div>
+      <div class="form-success" id="modal-success">✓ Your enquiry has been submitted! We'll contact you within 24 hours.</div>
+      <button class="btn-primary" onclick="submitModalForm()" style="width: 100%; justify-content: center;">Submit Enquiry →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div class="admin-login" id="admin-login">
+  <div class="login-box">
+    <h2>Admin Portal</h2>
+    <p>Sign in to manage clients and site settings.</p>
+    <div class="login-error" id="login-error">Incorrect username or password.</div>
+    <label class="admin-input-label">Username</label>
+    <input class="admin-input" type="text" id="login-user" placeholder="admin" style="margin-bottom: 1rem;">
+    <label class="admin-input-label">Password</label>
+    <input class="admin-input" type="password" id="login-pass" placeholder="••••••••" style="margin-bottom: 1.5rem;">
+    <button class="admin-save-btn" onclick="doLogin()">Sign In →</button>
+    <button style="background:transparent;border:none;color:rgba(255,255,255,0.3);font-size:0.82rem;cursor:pointer;margin-top:1rem;width:100%;" onclick="hideAdminLogin()">← Back to site</button>
+  </div>
+</div>
+
+<!-- ADMIN PAGE -->
+<div class="admin-page" id="admin-page">
+  <div class="admin-nav">
+    <div class="admin-brand"><img src="geriglo new logo white.svg" height="200" width="200"
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="switchAdminTab('clients', this)">Clients</button>
+      <button class="admin-tab" onclick="switchAdminTab('editor', this)">Site Editor</button>
+      <button class="admin-tab" onclick="switchAdminTab('works', this)">Works</button>
+      <button class="admin-tab" onclick="switchAdminTab('stats', this)">Analytics</button>
+    </div>
+    <button class="admin-logout" onclick="adminLogout()">Logout</button>
+  </div>
+
+  <div class="admin-content">
+
+    <!-- CLIENTS TAB -->
+    <div class="admin-section active" id="tab-clients">
+      <div class="admin-header">
+        <h2>Client Enquiries</h2>
+        <p>All form submissions from the website</p>
+      </div>
+      <div class="admin-stats" id="admin-stats-row"></div>
+      <table class="clients-table" id="clients-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Company</th>
+            <th>Service</th>
+            <th>Budget</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="clients-tbody"></tbody>
+      </table>
+      <div class="empty-state" id="no-clients" style="display:none;">No enquiries yet. They'll appear here once clients submit the contact form.</div>
+    </div>
+
+    <!-- SITE EDITOR TAB -->
+    <div class="admin-section" id="tab-editor">
+      <div class="admin-header">
+        <h2>Site Editor</h2>
+        <p>Update website content — changes reflect live on the site</p>
+      </div>
+      <div class="editor-grid">
+        <div class="editor-card">
+          <h4>Hero Section</h4>
+          <label class="admin-input-label">Badge Text</label>
+          <input class="admin-input" id="e-badge" placeholder="Creative Agency · Est. 2024">
+          <label class="admin-input-label">Hero Title (use \n for line break)</label>
+          <input class="admin-input" id="e-title" placeholder="We Make Brands Glow.">
+          <label class="admin-input-label">Description</label>
+          <input class="admin-input" id="e-desc" placeholder="Short tagline...">
+          <button class="admin-save-btn" onclick="saveHero()">Save Hero →</button>
+        </div>
+        <div class="editor-card">
+          <h4>Contact Info</h4>
+          <label class="admin-input-label">Email Address</label>
+          <input class="admin-input" id="e-email" placeholder="hello@geriglo.com">
+          <label class="admin-input-label">Phone Number</label>
+          <input class="admin-input" id="e-phone" placeholder="+91 98765 43210">
+          <label class="admin-input-label">Location</label>
+          <input class="admin-input" id="e-location" placeholder="Mumbai, India">
+          <button class="admin-save-btn" onclick="saveContact()">Save Contact →</button>
+        </div>
+        <div class="editor-card">
+          <h4>Stats Bar</h4>
+          <label class="admin-input-label">Stat 1 (Clients)</label>
+          <input class="admin-input" id="e-s1" placeholder="50+">
+          <label class="admin-input-label">Stat 2 (Projects)</label>
+          <input class="admin-input" id="e-s2" placeholder="200+">
+          <label class="admin-input-label">Stat 3 (Rating)</label>
+          <input class="admin-input" id="e-s3" placeholder="5★">
+          <label class="admin-input-label">Stat 4 (Years)</label>
+          <input class="admin-input" id="e-s4" placeholder="3+">
+          <button class="admin-save-btn" onclick="saveStats()">Save Stats →</button>
+        </div>
+        <div class="editor-card">
+          <h4>Footer & Brand</h4>
+          <label class="admin-input-label">Footer Tagline</label>
+          <input class="admin-input" id="e-tagline" placeholder="Making brands glow...">
+          <label class="admin-input-label">Nav Brand Name</label>
+          <input class="admin-input" id="e-brandname" placeholder="Geriglo">
+          <button class="admin-save-btn" onclick="saveBrand()">Save Brand →</button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- WORKS TAB -->
+    <div class="admin-section" id="tab-works">
+      <div class="admin-header">
+        <h2>Portfolio Works</h2>
+        <p>Upload project images visible on the website portfolio section</p>
+      </div>
+      <div class="works-upload-area" onclick="document.getElementById('work-file-input').click()">
+        <div class="upload-icon">↑</div>
+        <strong style="color:rgba(255,255,255,0.7);font-size:0.9rem;">Click to upload images</strong>
+        <p>JPG, PNG, WEBP — multiple files supported</p>
+        <input type="file" id="work-file-input" accept="image/*" multiple style="display:none;" onchange="handleWorkUpload(this)">
+      </div>
+      <div class="works-grid-admin" id="works-admin-grid"></div>
+      <div id="works-empty-admin" style="text-align:center;padding:2rem;color:rgba(255,255,255,0.2);font-size:0.875rem;display:none;">No works uploaded yet.</div>
+    </div>
+
+    <!-- ANALYTICS TAB -->
+    <div class="admin-section" id="tab-stats">
+      <div class="admin-header">
+        <h2>Analytics Overview</h2>
+        <p>Submission trends and service breakdown</p>
+      </div>
+      <div id="analytics-content"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ─── DATA STORAGE ───
+const CLIENTS_KEY = 'geriglo_clients';
+const SITE_KEY = 'geriglo_site';
+
+function getClients() {
+  try { return JSON.parse(localStorage.getItem(CLIENTS_KEY) || '[]'); }
+  catch { return []; }
+}
+function saveClients(arr) { localStorage.setItem(CLIENTS_KEY, JSON.stringify(arr)); }
+
+function getSiteData() {
+  const defaults = {
+    badge: 'Creative Agency · Est. 2024',
+    title: 'We Make\nBrands Glow.',
+    desc: 'Geriglo is a full-service creative marketing agency helping brands stand out through design, digital strategy, and storytelling.',
+    email: 'hello@geriglo.com',
+    phone: '+91 98765 43210',
+    location: 'Mumbai, India',
+    s1: '50+', s2: '200+', s3: '5★', s4: '3+',
+    tagline: 'Making brands glow through creative marketing, design, and storytelling.',
+    brandname: 'Geriglo'
+  };
+  try {
+    const saved = JSON.parse(localStorage.getItem(SITE_KEY) || '{}');
+    return {...defaults, ...saved};
+  } catch { return defaults; }
+}
+function saveSiteData(data) { localStorage.setItem(SITE_KEY, JSON.stringify({...getSiteData(), ...data})); }
+
+// ─── APPLY SITE DATA ───
+function setEl(id, val, prop) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (prop === 'html') el.innerHTML = val; else el.textContent = val;
+}
+function applySiteData() {
+  const d = getSiteData();
+  setEl('hero-badge-text', d.badge);
+  const titleEl = document.getElementById('hero-title');
+  if (titleEl) titleEl.innerHTML = d.title.split('\n').join('<br>');
+  setEl('hero-desc', d.desc);
+  setEl('contact-email', d.email);
+  setEl('contact-phone', d.phone);
+  setEl('contact-location', d.location);
+  setEl('stat1', d.s1);
+  setEl('stat2', d.s2);
+  setEl('stat3', d.s3);
+  setEl('stat4', d.s4);
+  setEl('footer-tagline', d.tagline);
+  setEl('nav-brand', d.brandname);
+}
+applySiteData();
+
+// ─── CONTACT MODAL ───
+function openContactModal() {
+  document.getElementById('contact-modal').classList.add('active');
+}
+function closeContactModal() {
+  document.getElementById('contact-modal').classList.remove('active');
+}
+document.getElementById('contact-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeContactModal();
+});
+
+// ─── FORM SUBMISSION ───
+function collectModalData() {
+  return {
+    id: Date.now(),
+    fname: document.getElementById('m-fname').value.trim(),
+    lname: document.getElementById('m-lname').value.trim(),
+    email: document.getElementById('m-email').value.trim(),
+    phone: document.getElementById('m-phone').value.trim(),
+    company: document.getElementById('m-company').value.trim(),
+    service: document.getElementById('m-service').value,
+    budget: document.getElementById('m-budget').value,
+    message: document.getElementById('m-message').value.trim(),
+    status: 'new',
+    date: new Date().toLocaleDateString('en-IN', {day:'2-digit',month:'short',year:'numeric'}),
+    source: 'modal'
+  };
+}
+
+function submitModalForm() {
+  const d = collectModalData();
+  if (!d.fname || !d.email || !d.service || !d.message) {
+    alert('Please fill in all required fields (Name, Email, Service, Project Details).');
+    return;
+  }
+  const clients = getClients();
+  clients.unshift(d);
+  saveClients(clients);
+  document.getElementById('modal-success').style.display = 'block';
+  setTimeout(() => {
+    closeContactModal();
+    document.getElementById('modal-success').style.display = 'none';
+    ['m-fname','m-lname','m-email','m-phone','m-company','m-message'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('m-service').value = '';
+    document.getElementById('m-budget').value = '';
+  }, 2200);
+}
+
+function submitInlineForm() {
+  const fname = document.getElementById('ic-fname').value.trim();
+  const email = document.getElementById('ic-email').value.trim();
+  const service = document.getElementById('ic-service').value;
+  const message = document.getElementById('ic-message').value.trim();
+  if (!fname || !email || !service) {
+    alert('Please fill in Name, Email and select a Service.');
+    return;
+  }
+  const clients = getClients();
+  clients.unshift({
+    id: Date.now(),
+    fname, lname: document.getElementById('ic-lname').value.trim(),
+    email, phone: '', company: '',
+    service, budget: '', message,
+    status: 'new',
+    date: new Date().toLocaleDateString('en-IN', {day:'2-digit',month:'short',year:'numeric'}),
+    source: 'inline'
+  });
+  saveClients(clients);
+  document.getElementById('inline-success').style.display = 'block';
+  setTimeout(() => {
+    document.getElementById('inline-success').style.display = 'none';
+    ['ic-fname','ic-lname','ic-email','ic-message'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('ic-service').value = '';
+  }, 3000);
+}
+
+// ─── ADMIN AUTH ───
+const ADMIN_CREDS = { user: 'admin', pass: 'admin123' };
+
+function showAdminLogin() {
+  document.getElementById('admin-page').classList.remove('active');
+  const loginEl = document.getElementById('admin-login');
+  loginEl.style.display = '';
+  loginEl.classList.add('active');
+  document.getElementById('login-user').value = '';
+  document.getElementById('login-pass').value = '';
+  document.getElementById('login-error').style.display = 'none';
+}
+function hideAdminLogin() {
+  document.getElementById('admin-login').classList.remove('active');
+}
+function doLogin() {
+  const u = (document.getElementById('login-user').value || '').trim();
+  const p = (document.getElementById('login-pass').value || '').trim();
+  if (u === ADMIN_CREDS.user && p === ADMIN_CREDS.pass) {
+    document.getElementById('login-error').style.display = 'none';
+    document.getElementById('admin-login').classList.remove('active');
+    document.getElementById('admin-login').style.display = 'none';
+    document.getElementById('admin-page').classList.add('active');
+    renderClients();
+    loadEditorFields();
+    renderAnalytics();
+    renderWorksAdmin();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+    document.getElementById('login-pass').value = '';
+    document.getElementById('login-pass').focus();
+  }
+}
+document.getElementById('login-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+
+function openAdmin() {
+  document.getElementById('admin-page').classList.add('active');
+  renderClients();
+  loadEditorFields();
+  renderAnalytics();
+  renderWorksAdmin();
+}
+function adminLogout() {
+  document.getElementById('admin-page').classList.remove('active');
+  showAdminLogin();
+}
+
+// ─── ADMIN TABS ───
+function switchAdminTab(name, btn) {
+  document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+  if (name === 'clients') renderClients();
+  if (name === 'editor') loadEditorFields();
+  if (name === 'stats') renderAnalytics();
+  if (name === 'works') renderWorksAdmin();
+}
+
+// ─── CLIENTS RENDER ───
+function renderClients() {
+  const clients = getClients();
+  const tbody = document.getElementById('clients-tbody');
+  const noClients = document.getElementById('no-clients');
+  const table = document.getElementById('clients-table');
+
+  // Stats
+  const statRow = document.getElementById('admin-stats-row');
+  const newCount = clients.filter(c => c.status === 'new').length;
+  const activeCount = clients.filter(c => c.status === 'active').length;
+  statRow.innerHTML = `
+    <div class="admin-stat-card"><div class="num">${clients.length}</div><div class="label">Total Enquiries</div></div>
+    <div class="admin-stat-card"><div class="num">${newCount}</div><div class="label">New Leads</div><div class="trend">↑ needs review</div></div>
+    <div class="admin-stat-card"><div class="num">${activeCount}</div><div class="label">Active Clients</div></div>
+    <div class="admin-stat-card"><div class="num">${clients.filter(c=>c.status==='done').length}</div><div class="label">Completed</div></div>
+  `;
+
+  if (clients.length === 0) {
+    table.style.display = 'none';
+    noClients.style.display = 'block';
+    return;
+  }
+  table.style.display = 'table';
+  noClients.style.display = 'none';
+
+  tbody.innerHTML = clients.map((c, i) => `
+    <tr>
+      <td><strong style="color:#fff;">${c.fname} ${c.lname}</strong></td>
+      <td>${c.email}</td>
+      <td>${c.company || '—'}</td>
+      <td>${c.service || '—'}</td>
+      <td style="font-size:0.8rem;">${c.budget || '—'}</td>
+      <td>
+        <select class="select-status" onchange="updateStatus(${i}, this.value)">
+          <option value="new" ${c.status==='new'?'selected':''}>🟡 New</option>
+          <option value="review" ${c.status==='review'?'selected':''}>🔵 Review</option>
+          <option value="active" ${c.status==='active'?'selected':''}>🟢 Active</option>
+          <option value="done" ${c.status==='done'?'selected':''}>⚫ Done</option>
+        </select>
+      </td>
+      <td style="font-size:0.8rem;color:rgba(255,255,255,0.35);">${c.date}</td>
+      <td style="display:flex;gap:6px;flex-wrap:wrap;">
+        <button class="action-btn" onclick="viewClient(${i})">View</button>
+        <button class="action-btn danger" onclick="deleteClient(${i})">Delete</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function updateStatus(i, val) {
+  const clients = getClients();
+  clients[i].status = val;
+  saveClients(clients);
+}
+
+function deleteClient(i) {
+  if (!confirm('Delete this enquiry?')) return;
+  const clients = getClients();
+  clients.splice(i, 1);
+  saveClients(clients);
+  renderClients();
+}
+
+function viewClient(i) {
+  const c = getClients()[i];
+  alert(`CLIENT DETAILS\n\nName: ${c.fname} ${c.lname}\nEmail: ${c.email}\nPhone: ${c.phone || 'N/A'}\nCompany: ${c.company || 'N/A'}\nService: ${c.service}\nBudget: ${c.budget || 'N/A'}\nDate: ${c.date}\n\nMessage:\n${c.message}`);
+}
+
+// ─── SITE EDITOR ───
+function loadEditorFields() {
+  const d = getSiteData();
+  document.getElementById('e-badge').value = d.badge;
+  document.getElementById('e-title').value = d.title;
+  document.getElementById('e-desc').value = d.desc;
+  document.getElementById('e-email').value = d.email;
+  document.getElementById('e-phone').value = d.phone;
+  document.getElementById('e-location').value = d.location;
+  document.getElementById('e-s1').value = d.s1;
+  document.getElementById('e-s2').value = d.s2;
+  document.getElementById('e-s3').value = d.s3;
+  document.getElementById('e-s4').value = d.s4;
+  document.getElementById('e-tagline').value = d.tagline;
+  document.getElementById('e-brandname').value = d.brandname;
+}
+function saveHero() {
+  saveSiteData({
+    badge: document.getElementById('e-badge').value,
+    title: document.getElementById('e-title').value,
+    desc: document.getElementById('e-desc').value
+  });
+  applySiteData();
+  alert('✓ Hero section saved!');
+}
+function saveContact() {
+  saveSiteData({
+    email: document.getElementById('e-email').value,
+    phone: document.getElementById('e-phone').value,
+    location: document.getElementById('e-location').value
+  });
+  applySiteData();
+  alert('✓ Contact info saved!');
+}
+function saveStats() {
+  saveSiteData({
+    s1: document.getElementById('e-s1').value,
+    s2: document.getElementById('e-s2').value,
+    s3: document.getElementById('e-s3').value,
+    s4: document.getElementById('e-s4').value
+  });
+  applySiteData();
+  alert('✓ Stats saved!');
+}
+function saveBrand() {
+  saveSiteData({
+    tagline: document.getElementById('e-tagline').value,
+    brandname: document.getElementById('e-brandname').value
+  });
+  applySiteData();
+  alert('✓ Brand info saved!');
+}
+
+// ─── ANALYTICS ───
+function renderAnalytics() {
+  const clients = getClients();
+  const el = document.getElementById('analytics-content');
+  if (clients.length === 0) {
+    el.innerHTML = '<div class="empty-state">No data yet. Analytics will appear after clients submit enquiries.</div>';
+    return;
+  }
+  const services = {};
+  clients.forEach(c => { services[c.service] = (services[c.service]||0)+1; });
+  const max = Math.max(...Object.values(services));
+  const colors = {'Graphic Designing':'#C8F04A','Digital Marketing':'#5DCAA5','Video Editing':'#FAC775','Social Media Management':'#85B7EB','Full Package':'#F09595'};
+  el.innerHTML = `
+    <div style="background:#171715;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem;">
+      <h4 style="color:rgba(255,255,255,0.7);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;margin-bottom:1.5rem;">Service Breakdown</h4>
+      ${Object.entries(services).map(([s,n]) => `
+        <div style="margin-bottom:1rem;">
+          <div style="display:flex;justify-content:space-between;font-size:0.82rem;color:rgba(255,255,255,0.5);margin-bottom:6px;"><span>${s}</span><span>${n} enquir${n>1?'ies':'y'}</span></div>
+          <div style="background:rgba(255,255,255,0.06);border-radius:100px;height:6px;overflow:hidden;">
+            <div style="background:${colors[s]||'#C8F04A'};height:100%;width:${(n/max)*100}%;border-radius:100px;transition:width 0.5s;"></div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+    <div style="background:#171715;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:1.5rem;">
+      <h4 style="color:rgba(255,255,255,0.7);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;margin-bottom:1.25rem;">Status Overview</h4>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
+        ${['new','review','active','done'].map(s => {
+          const cnt = clients.filter(c=>c.status===s).length;
+          const labels = {new:'New',review:'In Review',active:'Active',done:'Completed'};
+          const clrs = {new:'#C8F04A',review:'#FAC775',active:'#5DCAA5',done:'#888780'};
+          return `<div style="text-align:center;padding:1rem;background:rgba(255,255,255,0.03);border-radius:10px;"><div style="font-size:1.5rem;font-weight:800;color:${clrs[s]};font-family:'Plus Jakarta Sans',sans-serif;">${cnt}</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.3);margin-top:4px;">${labels[s]}</div></div>`;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+
+// ─── PORTFOLIO WORKS ───
+const WORKS_KEY = 'geriglo_works';
+
+function getWorks() {
+  try { return JSON.parse(localStorage.getItem(WORKS_KEY) || '[]'); }
+  catch { return []; }
+}
+function saveWorks(arr) { localStorage.setItem(WORKS_KEY, JSON.stringify(arr)); }
+
+function renderPortfolio() {
+  const works = getWorks();
+  const grid = document.getElementById('portfolio-grid');
+  const empty = document.getElementById('portfolio-empty');
+  if (!grid) return;
+  if (works.length === 0) {
+    grid.innerHTML = '';
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+  grid.innerHTML = works.map((w, i) => `
+    <div class="portfolio-item">
+      <img src="${w.src}" alt="${w.title || 'Project ' + (i+1)}" loading="lazy">
+      <div class="portfolio-overlay">
+        <div class="portfolio-caption">
+          <h4>${w.title || 'Project ' + (i+1)}</h4>
+          <span>${w.category || 'Design'}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderWorksAdmin() {
+  const works = getWorks();
+  const grid = document.getElementById('works-admin-grid');
+  const empty = document.getElementById('works-empty-admin');
+  if (!grid) return;
+  if (works.length === 0) {
+    grid.innerHTML = '';
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+  grid.innerHTML = works.map((w, i) => `
+    <div class="work-thumb">
+      <img src="${w.src}" alt="${w.title || ''}">
+      <div class="work-thumb-meta">
+        <input type="text" value="${w.title || ''}" placeholder="Project title" id="w-title-${i}">
+        <input type="text" value="${w.category || ''}" placeholder="Category (e.g. Branding)" id="w-cat-${i}">
+        <div class="work-thumb-actions">
+          <button class="work-save-inline-btn" onclick="saveWorkMeta(${i})">Save</button>
+          <button class="work-remove-btn" onclick="removeWork(${i})">Remove</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function saveWorkMeta(i) {
+  const works = getWorks();
+  works[i].title = document.getElementById('w-title-' + i).value.trim();
+  works[i].category = document.getElementById('w-cat-' + i).value.trim();
+  saveWorks(works);
+  renderPortfolio();
+}
+
+function removeWork(i) {
+  if (!confirm('Remove this work?')) return;
+  const works = getWorks();
+  works.splice(i, 1);
+  saveWorks(works);
+  renderWorksAdmin();
+  renderPortfolio();
+}
+
+function handleWorkUpload(input) {
+  const files = Array.from(input.files);
+  const works = getWorks();
+  let loaded = 0;
+  files.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      works.push({ src: e.target.result, title: file.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' '), category: '' });
+      loaded++;
+      if (loaded === files.length) {
+        saveWorks(works);
+        renderWorksAdmin();
+        renderPortfolio();
+      }
+    };
+    reader.readAsDataURL(file);
+  });
+  input.value = '';
+}
+
+// works tab handled inside original switchAdminTab
+
+renderPortfolio();
+
+// ─── SMOOTH NAV ───
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#' || href.startsWith('#contact') && this.getAttribute('onclick')) return;
+    const target = document.querySelector(href);
+    if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  nav.style.boxShadow = window.scrollY > 40 ? '0 2px 24px rgba(14,14,13,0.08)' : 'none';
+});
+</script>
+</body>
+</html>
